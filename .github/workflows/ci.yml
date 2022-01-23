@@ -12,15 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ '8', '11', '13', '15', '17' ]
+        java: [ '8', '11', '16', '17' ]
     name: Java ${{ matrix.Java }}
     steps:
       - uses: actions/checkout@v2
       - name: Set up Java
         uses: actions/setup-java@v2
         with:
-          distribution: 'temurin'
+          distribution: 'adopt'
           java-version: ${{ matrix.java }}
-          check-latest: true
       - name: Test
         run: ./gradlew test
